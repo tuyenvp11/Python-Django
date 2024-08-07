@@ -1,0 +1,62 @@
+{% extends 'app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% block ordered %} 
+
+        <div class="main">
+            <div class="box-element">
+                {% comment %} <div class="cart-row">				
+                    <div style="flex:2"><strong>Sản phẩm</strong></div>
+                    <div style="flex:2"></div>
+                    <div style="flex:1"><strong>Số lượng</strong></div>
+                    <div style="flex:1"><strong>Tổng tiền</strong></div>
+                    
+                </div> {% endcomment %}
+                
+                {% comment %} {% for item in items %}
+                <div class="cart-row">				
+                    <div style="flex:2"><p>{{item.product.name}}</p></div>
+                    <div style="flex:2"><img class="row-image" src="{{item.product.ImageURL}}"></div>
+                    <div style="flex:1"><p class="quantity">{{item.quantity}}</p></div>
+                    <div style="flex:1"><p>{{item.get_total | floatformat:3 }}</p></div> 
+                    
+                </div>
+                {% endfor %} {% endcomment %}
+                <table class="table">
+                    {% comment %} <tr>
+                        <th><h5>Tổng tiền thanh toán:  <strong>{{order.get_cart_total | floatformat:3}}</strong></h5></th>
+                    </tr> {% endcomment %}
+                    {% for order in ordered %}                       
+                        <tr>
+                            <th>
+                                <h5>Thông tin nhận hàng của bạn:</h5>
+                                <h6>Mã đơn hàng: {{ order.id }}</h6>
+                                <h6>Tên của bạn: {{ order.name }}</h6>
+                                <h6>Địa chỉ của bạn: {{ order.address }}</h6>
+                                <h6>Số điện thoại của bạn: {{ order.phone }}</h6>
+                            </th>
+                        </tr>          
+                    {% endfor %}
+                </table>
+    
+            </div>
+        </div>
+        
+        {% endblock ordered %}
+        <script src="" async defer></script>
+    </body>
+</html>

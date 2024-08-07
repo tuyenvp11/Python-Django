@@ -1,0 +1,100 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content_checkout %}
+     <div class="row" style="font-family: Poppins;">
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+				<form id="form" method="POST" action="">
+					{% csrf_token %}
+					
+                    <h3 class="text-uppercase fw-bold">Thông tin về bạn</h3>
+					{% comment %} {% if user.is_authenticated %}
+					<div id="user-info">
+						<div class="form-field w-100">
+							<input required class="form-control" type="text" name="name" placeholder="Họ và tên.." value="{{request.user}}">
+							
+						</div>
+						<div class="form-field w-100">
+							<input required class="form-control" type="email" name="email" placeholder="Email.." value="{{user.email}}">							
+						</div>						
+					</div>
+					{% endif %} {% endcomment %} 
+
+					<div id="user-info">
+						<div class="form-field w-100">
+							<input required class="form-control" type="text" name="name" placeholder="Họ và tên.." >
+							
+						</div>										
+					</div>		
+					
+					<div id="shipping-info">
+						<hr>
+						<p class="fw-bold">Thông tin nhận hàng:</p>
+						<hr>
+						<div class="form-field w-100">
+							<input required class="form-control" type="text" name="address" placeholder="Địa chỉ..">
+							
+						</div>
+						
+						<div class="form-field w-100">
+							<input required class="form-control" type="text" name="phone" placeholder="Số điện thoại..">
+							
+						</div>						
+					</div>
+
+					{% comment %} <div id="payment-info">
+						<hr>
+						<p class="fw-bold">Phương thức thanh toán:</p>
+						<hr>
+						<div class="form-field">
+							<input class="" type="checkbox" name="postpaid">  Thanh toán khi nhận hàng
+							<br>
+							<br>							
+							<input class="" type="checkbox" name="prepay">  Quét mã QR   <br>  
+							<img src="{% static 'app/images/maqrBank.jpg' %}" class="" alt="QRcode" height="250px" width="250px">
+						</div>						
+					</div> {% endcomment %}
+
+					
+
+					<hr>
+					<input class="btn btn-success btn-block" type="submit" value="Đặt hàng">
+				</form>
+
+				<div class="main">
+ 
+					
+				 
+				</div>
+
+			</div>
+
+			<br>
+			<div class="box-element hidden" id="payment-info">
+				<small>Tính năng thanh toán</small>
+			</div>
+			
+		</div>
+
+
+		<div class="col-lg-6">
+			<div class="box-element">
+				<a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Trở lại giỏ hàng</a>
+				<hr>
+				<h3 class="fw-bold">Thông tin đơn hàng</h3>
+				<hr>
+				{% for item in items %}
+				<div class="cart-row">
+					<div style="flex:2"><p>{{ item.product.name }}</p></div>
+					<div style="flex:2"><img class="row-image" src="{{ item.product.ImageURL }}"></div>
+					<div style="flex:1"><p>{{ item.product.price | floatformat:3 }}</p></div>
+					<div style="flex:1"><p>{{ item.quantity }}</p></div>
+				</div>
+				{% endfor %}
+				{% comment %} <h5>Mã đơn hàng:   {{order.id}}</h5> {% endcomment %}
+				<h5>Số lượng mặt hàng:   {{order.get_cart_items}}</h5>
+				<h5>Tổng tiền:   {{order.get_cart_total | floatformat:3}}</h5>
+			</div>
+		</div>
+	</div>
+{% endblock content_checkout %}

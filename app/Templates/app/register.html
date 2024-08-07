@@ -1,0 +1,205 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% block register %}
+
+        {% comment %} <section class=" pb-3 pt-3" >
+            <div class="container">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-12 ">
+                  <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                      <div class="row justify-content-center">
+                        <div class="col-md-10 col-lg-6 col-xl-6 order-2 order-lg-1">
+          
+                          <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Đăng ký</p>
+                          {% csrf_token %} 
+                          <form method="POST" class="mx-1 mx-md-4">
+          
+                            <div class="d-flex flex-row align-items-center mb-4">
+                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                              <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example1c">Tên đăng nhập</label>
+                                {{form.username}}
+                              </div>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                              <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                              <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example3c">Email</label>
+                                {{form.email}}
+                              </div>
+                            </div>      
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                              <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example1c">Họ</label>
+                                {{form.first_name}}
+                              </div>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                              <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example1c">Tên</label>
+                                {{form.last_name}}
+                              </div>
+                            </div>
+          
+                                            
+          
+                            <div class="d-flex flex-row align-items-center mb-4">
+                              <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                              <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example4c">Mật khẩu</label>
+                                {{form.password1}}
+                              </div>
+                            </div>
+          
+                            <div class="d-flex flex-row align-items-center mb-4">
+                              <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                              <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example4cd">Nhập lại mật khẩu</label>
+                                {{form.password2}}
+                              </div>
+                            </div>
+          
+                            <div class="form-check d-flex mb-5">
+                              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                              <label class="form-check-label" for="form2Example3">
+                                Đồng ý các <a href="#!">Điều khoản và dịch vụ</a>
+                              </label>
+                            </div>
+          
+                            <div class="d-flex mx-4 mb-3 mb-lg-4">
+                              <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg rounded">Đăng ký</button>
+                            </div>
+          
+                          </form>
+          
+                        </div>
+                        <div class="col-md-10 col-lg-6 col-xl-6 d-flex align-items-center order-1 order-lg-2">
+          
+                          <img src="{% static 'app/images/Tshop.png' %}"
+                            class="img-fluid" alt="" height="400px" width="400px">
+          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section> {% endcomment %}
+
+        {% comment %} <form method = "POST">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" name="create user" />
+        </form> {% endcomment %}
+
+        <div class="container h-100" style="font-family: Poppins;">
+          <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+              <div class="d-flex justify-content-center">
+                <h3 id="form-title">ĐĂNG KÝ TÀI KHOẢN</h3>
+              </div>
+              <div class="d-flex justify-content-center form_container">
+      
+                <form method="POST" action="">
+                  {% csrf_token %} 
+                  <div class="input-group mb-3" style="width:350px">
+                    <div class="input-group-append">
+                      <span class="input-group-text h-100"><i class="fas fa-user"></i></span>
+                    </div>
+                    {{form.username}}
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text h-100"><i class="fas fa-envelope-square"></i></span>
+                    </div>
+                    {{form.email}}
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-append">
+                      <span class="input-group-text h-100"><i class="fas fa-user"></i></span>
+                    </div>
+                    {{form.first_name}}
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-append">
+                      <span class="input-group-text h-100"><i class="fas fa-user"></i></span>
+                    </div>
+                    {{form.last_name}}
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text h-100"><i class="fas fa-key"></i></span>
+                    </div>
+                    {{form.password1}}
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text h-100"><i class="fas fa-key"></i></span>
+                    </div>
+                    {{form.password2}}
+                  </div>
+      
+                  <div class="d-flex justify-content-center mt-3 login_container "  >
+                    <input class="btn btn-success rounded" type="submit" value="Tạo tài khoản" >
+                  </div>
+                </form>
+              </div>
+
+              {{form.errors}}
+          
+              <div class="mt-4">
+                <div class="d-flex justify-content-center links">
+                  Bạn đã có tài khoản? <a href="{% url 'login' %}" class="ml-2">Đăng nhập ngay</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <script>
+          /* Bởi vì không đặt giá trị giữ chỗ trong Forms.py nên chúng sẽ được đặt ở đây bằng cách sử dụng Javascript thuần túy
+          Chúng tôi bắt đầu lập chỉ mục tại một vì CSRF_token được xem xét và trường nhập
+          */
+          //Truy vấn tất cả các trường đầu vào
+          var form_fields = document.getElementsByTagName('input')
+          form_fields[3].placeholder='Tên đăng nhập..';
+          form_fields[4].placeholder='Email..';
+          form_fields[5].placeholder='Họ..';
+          form_fields[6].placeholder='Tên..';
+          form_fields[7].placeholder='Mật khẩu...';
+          form_fields[8].placeholder='Nhập lại mật khẩu...';
+      
+      
+          for (var field in form_fields){	
+            form_fields[field].className += ' form-control'
+          }
+        </script> 
+        
+        <script src="" async defer></script>
+        {% endblock register %}
+    </body>
+</html>
